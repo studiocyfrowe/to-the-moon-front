@@ -2,32 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: white;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@font-face {
+  font-family: 'PlusJakartaSans-ExtraBold';
+  src: url('./assets/fonts/PlusJakartaSans-ExtraBold.ttf');
+}
+
+@font-face {
+  font-family: 'PlusJakartaSans-Medium';
+  src: url('./assets/fonts/PlusJakartaSans-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'PlusJakartaSans-Regular';
+  src: url('./assets/fonts/PlusJakartaSans-Regular.ttf');
+}
+
+
+h1, h2, h3, h4, h5, h6, b, button {
+  font-family: 'PlusJakartaSans-ExtraBold';
+}
+
+p, div, span, small, i {
+  font-family: 'PlusJakartaSans-Regular';
+}
+
+.bg-zinc-950 {
+  background-color: #0B0C0C;
+}
+
+.bg-orange-950 {
+  background-color: #481E15;
+}
+
+.bg-orane-900 {
+  background-color: #9B3921;
+}
+
+.bg-orange-600, ::selection {
+  background-color: #EC6140;
+}
+
+::selection {
+  color: #0B0C0C;
 }
