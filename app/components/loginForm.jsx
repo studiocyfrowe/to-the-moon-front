@@ -2,10 +2,16 @@
 import React, { useState } from 'react'
 import GlobalInput from './globalInput'
 import GlobalButton from './globalButton'
+import ValidationAlert from './validationAlert'
+import { useRouter } from 'next/navigation'
+import axios from 'axios'
+import { data } from 'autoprefixer'
 
 export default function LoginForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const router = useRouter()
 
     async function authUser(email, password) {
         await fetch('http://127.0.0.1:8000/api/login', {
@@ -15,14 +21,18 @@ export default function LoginForm() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({email: email, password: password})
-        }).then((res) => console.log(res.token))
-        .catch((e) => console.log(e))
+        }).then((res) => res.json())
+        .then((data) => {
+            console.log(data['token'])
+            // router.push('/dashboard')
+        })
+        .catch((error) => console.error("Error:", error.message))
     }
 
     return (
-        <div className="flex flex-col p-8 border border-solid border-orange-600 bg-orange-600/30 rounded-lg mx-auto my-auto" style={{
-            width: `20vw`
-        }}>
+        <div className="flex flex-col p-8 border border-solid border-orange-600 bg-orange-600/30 rounded-lg mx-auto my-auto">
+            {/* <ValidationAlert status={`Alert`} msg={`Failed :(`} color={`border-red-600`}/>
+            <div className="mb-8"></div> */}
             <h3 className="mb-12 text-4xl">
                 Witaj <br/>w świecie kina!
             </h3>

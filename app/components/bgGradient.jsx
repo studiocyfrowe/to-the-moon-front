@@ -1,7 +1,7 @@
 export default function BgGradient() {
     return (
-        <div id="bg-wrap">
-            <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+        <div id="bg-wrap" className="h-screen">
+            <svg viewBox="0 0 100 300" preserveAspectRatio="xMidYMid slice">
             <defs>
             <radialGradient id="Gradient1" cx="50%" cy="50%" fx="0.441602%" fy="50%" r=".5"><animate attributeName="fx" dur="34s" values="0%;3%;0%" repeatCount="indefinite"></animate><stop offset="0%" stop-color="rgba(233 ,130 ,3, 1)"></stop><stop offset="100%" stop-color="rgba(166,66,8, 0)"></stop></radialGradient>
             <radialGradient id="Gradient2" cx="50%" cy="50%" fx="2.68147%" fy="50%" r=".5"><animate attributeName="fx" dur="23.5s" values="0%;3%;0%" repeatCount="indefinite"></animate><stop offset="0%" stop-color="rgba(166,66,8, 1)"></stop><stop offset="100%" stop-color="rgba(233,130,3, 0)"></stop></radialGradient>
