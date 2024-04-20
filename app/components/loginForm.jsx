@@ -23,8 +23,10 @@ export default function LoginForm() {
             body: JSON.stringify({email: email, password: password})
         }).then((res) => res.json())
         .then((data) => {
-            console.log(data['token'])
-            // router.push('/dashboard')
+            // console.log(data['token'])
+            if (data['token']) {
+                router.push('/dashboard')
+            }
         })
         .catch((error) => console.error("Error:", error.message))
     }
