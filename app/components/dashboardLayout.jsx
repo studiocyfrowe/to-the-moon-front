@@ -18,10 +18,10 @@ export default function DashboardLayout({user, children}) {
                 <div className="col-span-10 border border-solid border-orange-600 bg-orange-600/30 rounded-lg p-8 overflow-y-scroll">
                     <Breadcrumb
                         homeElement={'Home'}
-                        separator={<span> | </span>}
-                        activeClasses='border border-solid border-orange-600 bg-orange-600/30 px-3 py-2 rounded-lg'
+                        separator={<span> \</span>}
+                        activeClasses='border-b border-solid border-white'
                         containerClasses='flex text-xs mb-4' 
-                        listClasses='hover:bg-orange-600/50 mx-2 font-bold px-3 py-2 my-auto'
+                        listClasses='hover:bg-orange-600/50 me-4 font-bold my-auto'
                         capitalizeLinks
                     />
                     {children}

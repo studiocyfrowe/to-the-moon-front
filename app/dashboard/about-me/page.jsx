@@ -40,10 +40,10 @@ export default function AboutMe() {
                 <div className="flex flex-col">
                     <h4 className="mb-8 text-2xl border-b border-orange-600/30 pb-8">Profil użytkownika</h4>
                     <UserProfileHeader data={data}/>
-                    <div className="my-4"></div>
+                    {/* <div className="my-4"></div>
                     <DropdownContent name={`Ulubione`} count={10}>
                         <UserFavoriteContent/>
-                    </DropdownContent>
+                    </DropdownContent> */}
                 </div>
             </DashboardLayout>
         </MainLayout>
