@@ -1,4 +1,5 @@
 import UserDataExcerpt from "./UserDataExcerpt";
+import Breadcrumb from "./breadcrumb";
 import DashboardUser from "./dashboardUser";
 import MainNavigation from "./mainNavigation";
 
@@ -13,6 +14,7 @@ export default function DashboardLayout({user, children}) {
                     <MainNavigation></MainNavigation>
                 </div>
                 <div className="col-span-10 border border-solid border-orange-600 bg-orange-600/30 rounded-lg p-8 overflow-y-scroll">
+                    {/* <Breadcrumb/> */}
                     {children}
                 </div>
             </div>

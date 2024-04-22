@@ -55,3 +55,12 @@ p, div, span, small, i {
 ::selection {
   color: #0B0C0C;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
