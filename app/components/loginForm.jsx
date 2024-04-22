@@ -23,8 +23,8 @@ export default function LoginForm() {
             body: JSON.stringify({email: email, password: password})
         }).then((res) => res.json())
         .then((data) => {
-            // console.log(data['token'])
             if (data['token']) {
+                localStorage.setItem('token', data['token'])
                 router.push('/dashboard')
             }
         })

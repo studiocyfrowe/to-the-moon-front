@@ -7,15 +7,15 @@ export default function UserFavoriteContent() {
     return (
         <React.Fragment>
             <div className="flex flex-col divide-y divide-orange-600/30">
-                <DropdownContent name={`Kina`} count={19}>
+                {/* <DropdownContent name={`Kina`} count={19}>
                     <div>kina</div>
-                </DropdownContent>
+                </DropdownContent> */}
                 <DropdownContent name={`Filmy`} count={10}>
                     <MoviesBox/>
                 </DropdownContent>
-                <DropdownContent name={`Gatunki filmowe`} count={10}>
+                {/* <DropdownContent name={`Gatunki filmowe`} count={10}>
                     <ButtonsBox></ButtonsBox>
-                </DropdownContent>
+                </DropdownContent> */}
             </div>
         </React.Fragment>
     )

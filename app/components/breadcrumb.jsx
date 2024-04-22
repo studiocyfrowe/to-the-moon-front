@@ -1,37 +1,36 @@
-"use client"
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+'use client'
 
-export default function Breadcrumb() {
-  const router = useRouter();
-  // Check if router is ready and asPath is defined
-  if (!router.isReady || !router.asPath) {
-    return null; // or return a loading indicator
-  }
+import React, { ReactNode } from 'react'
 
-  const pathSegments = router.asPath.split('/').filter(Boolean);
-  return (
-    <nav aria-label="breadcrumb">
-      <ol className="breadcrumb">
-        {pathSegments.map((segment, index) => {
-          const routePath = `/${pathSegments.slice(0, index + 1).join('/')}`;
-          const isLast = index === pathSegments.length - 1;
-          const isRoot = index === 0;
-          const segmentName = segment.charAt(0).toUpperCase() + segment.slice(1); // Capitalize first letter
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
-          return (
-            <li key={routePath} className={`breadcrumb-item${isLast ? ' active' : ''}`}>
-              {isLast ? (
-                segmentName
-              ) : (
-                <Link href={routePath}>
-                  <a>{segmentName}</a>
-                </Link>
-              )}
-            </li>
-          );
-        })}
-      </ol>
-    </nav>
-  );
-};
+export default function Breadcrumb({homeElement, separator, containerClasses, listClasses, activeClasses, capitalizeLinks}) {
+
+    const paths = usePathname()
+    const pathNames = paths.split('/').filter( path => path )
+
+    return (
+        <div>
+            <ul className={containerClasses}>
+                <li className={listClasses}><Link href={'/'}>{homeElement}</Link></li>
+                {pathNames.length > 0 && separator}
+            {
+                pathNames.map( (link, index) => {
+                    let href = `/${pathNames.slice(0, index + 1).join('/')}`
+                    let itemClasses = paths === href ? `${listClasses} ${activeClasses}` : listClasses
+                    let itemLink = capitalizeLinks ? link[0].toUpperCase() + link.slice(1, link.length) : link
+                    return (
+                        <React.Fragment key={index}>
+                            <li className={itemClasses} >
+                                <Link href={href}>{itemLink}</Link>
+                            </li>
+                            {pathNames.length !== index + 1 && separator}
+                        </React.Fragment>
+                    )
+                })
+            }
+            </ul>
+        </div>
+    )
+}
