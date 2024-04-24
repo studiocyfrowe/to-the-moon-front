@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 export default function UserProfileHeader({data}) {
     return (
-        <div className="grid grid-cols-7 gap-8 border-b border-solid border-orange-600/30 pb-8">
+        <div className="grid grid-cols-7 gap-8 border-b border-solid border-orange-600/30 py-8">
             <div className="col-span-3 flex">
                 <div className="flex flex-col w-full my-auto">
                     {/* <div className="rounded-full border border-solid border-orange-600 bg-orange-600/30 p-3 flex me-auto mb-4">
@@ -25,20 +25,20 @@ export default function UserProfileHeader({data}) {
                             <h4 className="text-2xl">{data.first_name} {data.last_name}</h4>
                             <small>{data.email}</small>
                             <small>od: {data.created_at}</small>
+                            <div className="flex flex-row mt-4">
+                                <Link href={`/dashboard/about-me/following`}>
+                                    <div className="text-xs px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-lg me-4">
+                                    <FontAwesomeIcon icon={faUser} className='h-4 me-2' />{`Obserwujący`} <span>(20)</span></div>
+                                </Link>
+                            <div className="text-xs px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-lg">
+                            <FontAwesomeIcon icon={faUser} className='h-4 me-2' />{`Oberwowani`} <span>(20)</span></div>
+                            </div>
                         </div>
                     </div>
-                    {data.fav_quote ? <i className='w-4/5 mt-12 text-2xl'>"{data.fav_quote}"</i> : <div className='mt-8 text-white/30 rounded-lg bg-zinc-300/10 px-3 py-3 min-h-36'><i>Click double to input your quote...</i></div>}
+                    {data.fav_quote ? <i className='w-4/5 mt-12 text-2xl'>"{data.fav_quote}"</i> : <div className='mt-12 text-white/30 rounded-lg bg-zinc-300/10 px-3 py-3 min-h-36'><i>Click double to input your quote...</i></div>}
                     <small className='mt-12'>Ulubione gatunki</small>
                     <div className="flex flex-col text-xs">
                         <ButtonsBox></ButtonsBox>
-                    </div>
-                    <div className="flex flex-row mt-16">
-                    <Link href={`/dashboard/about-me/following`}>
-                        <div className="text-md px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-lg me-4">
-                        <FontAwesomeIcon icon={faUser} className='h-4 me-2' />{`Obserwujący`} <span>(20)</span></div>
-                    </Link>
-                    <div className="text-md px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-lg">
-                    <FontAwesomeIcon icon={faUser} className='h-4 me-2' />{`Oberwowani`} <span>(20)</span></div>
                     </div>
                 </div>
             </div>

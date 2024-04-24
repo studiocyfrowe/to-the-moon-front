@@ -7,6 +7,7 @@ import UserFavoriteContent from '@/app/components/userFavoriteContent'
 import UserProfileHeader from '@/app/components/userProfileHeader'
 import useSWR from 'swr'
 import axios from 'axios'
+import PageHeader from '@/app/components/pageHeader'
 
 const userData = {
     name: 'Dominik',
@@ -38,7 +39,7 @@ export default function AboutMe() {
         <MainLayout>
             <DashboardLayout user={userData}>
                 <div className="flex flex-col">
-                    <h4 className="mb-8 text-2xl border-b border-orange-600/30 pb-8">Profil użytkownika</h4>
+                    <PageHeader parent={`Profil użytkownika`} child={data.nickname}/>
                     <UserProfileHeader data={data}/>
                     {/* <div className="my-4"></div>
                     <DropdownContent name={`Ulubione`} count={10}>
