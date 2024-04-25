@@ -55,7 +55,7 @@ export default function Followed() {
                 <PageHeader parent={`Profil użytkownika`} child={`Obserwowani`}/>
                 <div className="grid grid-cols-3 gap-8">
                     {followed.map((user) => (
-                        <FollowUserItem user={user}/>
+                        <FollowUserItem user={user.followed_belongs}/>
                     ))}
                 </div>
             </DashboardLayout>
