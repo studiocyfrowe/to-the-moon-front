@@ -2,50 +2,68 @@
 import DashboardLayout from "@/app/components/dashboardLayout";
 import MainLayout from "@/app/components/mainLayout";
 import PageHeader from "@/app/components/pageHeader";
-import UserCard from "@/app/components/userCard";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import dustin from '@/app/assets/dustin-hofman.jpg'
 import useSWR from "swr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 const userData = {
     name: 'Dominik',
     email: 'email@test.pl'
 }
 
-export default function Following() {
-    const [followings, setFollowings] = useState(null);
+// const fetcher = (url, token) =>
+//     axios
+//       .get(url, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
+//       .then((res) => res.data);
 
-    async function unFollowUser(userID) {
-        await axios.post(`http://127.0.0.1:8000/api/user/social/unfollow/${userID}`, { 
-            headers: { 
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-        }}).then((res) => res.json()).catch((e) => console.log(e))
-    }
+export default function Following() {
+    // const { data: followings, error, isLoading } = useSWR('http://127.0.0.1:8000/api/user/following', fetcher)
+    const [following, setIsFollowing] = useState([])
+    const [isError, setError] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        async function fetchFollowings() {
-            const response = await axios.get("http://127.0.0.1:8000/api/user/following", { 
-                headers: { 
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
-                }}
-            );
-            const data = await response.data;
-            setFollowings(data);
+        async function getFollowingUsers() {
+            setIsLoading(true)
+            await axios.get('http://127.0.0.1:8000/api/user/following', {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            })
+            .then((res) => (res.data))
+            .then((data) => {
+                setIsFollowing(data.users)
+                setIsLoading(false)
+            })
+            .catch((e) => {
+                console.log(e)
+                setError(true)
+            })
         }
-        fetchFollowings();
-    }, []);
+        getFollowingUsers()
+    }, [])
 
-    if (!followings) return <h2>Loading...</h2>;
+    if (isError) 
+    return <MainLayout>
+                <DashboardLayout user={userData}>
+                    <h2>Error</h2>
+                </DashboardLayout>
+            </MainLayout>
+
+    if (isLoading) 
+    return <MainLayout>
+                <DashboardLayout user={userData}>
+                    <h2>Loading</h2>
+                </DashboardLayout>
+            </MainLayout>
 
     return (
         <MainLayout>
             <DashboardLayout user={userData}>
                 <PageHeader parent={`Profil użytkownika`} child={`Obserwujący`}/>
                 <div className="grid grid-cols-3 gap-8">
-                    {followings.users.map((user) => (
+                    {following.map((user) => (
                         <div className="flex flex-row my-12">
                             {dustin ? <div className='w-24 h-24 border-2 border-solid border-orange-600 rounded-full me-6' style={{
                                 backgroundImage: `url(${dustin.src})`,
