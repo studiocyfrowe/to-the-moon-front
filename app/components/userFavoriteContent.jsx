@@ -1,6 +1,6 @@
 import React from "react";
 import DropdownContent from "./dropdownContent";
-import MoviesBox from "./moviesBox";
+import MoviesBox from "./itemsBox";
 import ButtonsBox from "./buttonsBox";
 
 export default function UserFavoriteContent() {

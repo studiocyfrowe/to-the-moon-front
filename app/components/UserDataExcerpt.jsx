@@ -7,9 +7,8 @@ export default function UserDataExcerpt({data}) {
             <Image src={user_icon} height={60} alt='Logo' className='me-6'/>
             <div className="flex flex-col">
                 <span>Hi,</span>
-                <h4 className="text-xl">{data.name}</h4>
-                <small>{data.email}</small>
-                <u className='mt-4 text-sm'>check details</u>
+                <h4 className="text-xl">{data.first_name}</h4>
+                <u className='mt-4 text-sm cursor-pointer'>check details</u>
             </div>
         </div>
     )

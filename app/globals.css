@@ -27,6 +27,12 @@ body {
   src: url('./assets/fonts/PlusJakartaSans-Regular.ttf');
 }
 
+td, th {
+  padding: 1.25rem;
+  border: 1px solid rgb(255, 255, 255, .68);
+  text-align: center;
+}
+
 
 h1, h2, h3, h4, h5, h6, b, button {
   font-family: 'PlusJakartaSans-ExtraBold';

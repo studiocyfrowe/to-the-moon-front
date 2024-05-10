@@ -3,10 +3,6 @@ import DashboardLayout from "@/app/components/dashboardLayout";
 import MainLayout from "@/app/components/mainLayout";
 import PageHeader from "@/app/components/pageHeader";
 import axios from "axios";
-import dustin from '@/app/assets/dustin-hofman.jpg'
-import useSWR from "swr";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import FollowUserItem from "@/app/components/followUser";
 

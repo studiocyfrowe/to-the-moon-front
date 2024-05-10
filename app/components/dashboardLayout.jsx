@@ -1,9 +1,9 @@
 "use client"
-import useSWR from "swr";
 import UserDataExcerpt from "./UserDataExcerpt";
 import Breadcrumb from "./breadcrumb";
 import DashboardUser from "./dashboardUser";
 import MainNavigation from "./mainNavigation";
+import NavItem from "./navItem";
 
 export default function DashboardLayout({user, children}) {
     return (
@@ -13,7 +13,17 @@ export default function DashboardLayout({user, children}) {
                     <DashboardUser>
                         <UserDataExcerpt data={user}/>
                     </DashboardUser>
-                    <MainNavigation></MainNavigation>
+                    <MainNavigation>
+                        <div className="flex flex-col divide-y divide-solid divide-orange-600/30">
+                            <NavItem label={`Movies`}/>
+                            <NavItem label={`Cinemas`}/>
+                            <NavItem label={`Posts`}/>
+                            <NavItem label={`YourCity`}/>
+                        </div>
+                        <div className="flex flex-col mt-auto">
+                            <NavItem label={`Logout`}/>
+                        </div>
+                    </MainNavigation>
                 </div>
                 <div className="col-span-10 border border-solid border-orange-600 bg-orange-600/30 rounded-lg p-8 overflow-y-scroll">
                     <Breadcrumb

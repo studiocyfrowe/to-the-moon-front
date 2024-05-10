@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import Link from 'next/link'
 
-export default function UserProfileHeader({data}) {
+export default function UserProfileHeader({data, following, followers}) {
     return (
         <div className="grid grid-cols-7 gap-8 border-b border-solid border-orange-600/30 py-8">
             <div className="col-span-3 flex">
@@ -28,10 +28,14 @@ export default function UserProfileHeader({data}) {
                             <div className="flex flex-row mt-4">
                                 <Link href={`/dashboard/about-me/following`}>
                                     <div className="text-xs px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-lg me-4">
-                                    <FontAwesomeIcon icon={faUser} className='h-4 me-2' />{`Obserwujący`} <span>(20)</span></div>
+                                        <FontAwesomeIcon icon={faUser} className='h-4 me-2' />{`Obserwujący`} <span>({following})</span>
+                                    </div>
                                 </Link>
-                            <div className="text-xs px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-lg">
-                            <FontAwesomeIcon icon={faUser} className='h-4 me-2' />{`Oberwowani`} <span>(20)</span></div>
+                                <Link href={`/dashboard/about-me/followed`}>
+                                    <div className="text-xs px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-lg">
+                                        <FontAwesomeIcon icon={faUser} className='h-4 me-2' />{`Oberwowani`} <span>({followers})</span>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>

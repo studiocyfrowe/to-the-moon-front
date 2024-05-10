@@ -3,8 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import dustin from '@/app/assets/dustin-hofman.jpg'
 import React from "react";
+import axios from "axios";
 
 export default function FollowUserItem({user}) {
+    async function unFollowUser(userID) {
+        await axios.post(`http://127.0.0.1:8000/api/user/social/unfollow/${userID}`, {
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        }).then((res) => res.data)
+        .catch((e) => console.log(e))
+    }
+    
     return (
         <React.Fragment>
             <div className="flex flex-row my-12" key={user.id}>
@@ -16,7 +24,9 @@ export default function FollowUserItem({user}) {
                     <h4 className="text-2xl">{user.first_name} {user.last_name}</h4>
                     <small>{user.email}</small>
                 </div>
-                <div onClick={() => unFollowUser(user.id)} className="rounded-full flex border-2 border-solid border-green-600 bg-green-600/30 hover:border-red-600 hover:bg-red-600/30 w-12 h-12 my-auto ms-8 cursor-pointer">
+                <div onClick={(user) => {
+                    unFollowUser(user.id)
+                }} className="rounded-full flex border-2 border-solid border-green-600 bg-green-600/30 hover:border-red-600 hover:bg-red-600/30 w-12 h-12 my-auto ms-8 cursor-pointer">
                     <FontAwesomeIcon icon={faCheck} className="mx-auto my-auto"/>
                 </div>
             </div>
