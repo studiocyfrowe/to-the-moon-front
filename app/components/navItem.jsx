@@ -7,7 +7,7 @@ export default function NavItem({label}) {
     return (
         <Link href={hrefLowerCase}>
             <div className="flex flex-row py-3 px-4 hover:bg-orange-800/60 rounded-md transition-all">
-                <h6 className="text-lg my-auto">{label}</h6>
+                <h6 className="text-md my-auto">{label}</h6>
                 <FontAwesomeIcon icon={faArrowRight} className="my-auto ms-auto"/>
             </div>
         </Link>

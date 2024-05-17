@@ -70,3 +70,7 @@ p, div, span, small, i {
   -ms-overflow-style: none;  
   scrollbar-width: none;  
 }
+
+.text-secondary_app {
+  color: #350A00;
+}
