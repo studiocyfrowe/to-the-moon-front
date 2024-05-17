@@ -5,6 +5,9 @@ import MovieItem from '../components/singleItem'
 import MoviesBox from '@/app/components/itemsBox'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import GlobalButton from '../components/globalButton'
+import Posts from '../components/posts'
+
 
 const userData = {
     first_name: 'Dominik',
@@ -15,15 +18,7 @@ export default function Dashboard() {
     return (
         <MainLayout>
             <DashboardLayout user={userData}>
-                <div className="flex flex-row px-4 border border-solid border-orange-600 bg-orange-600/30 rounded-lg text-md w-3/5 mb-8 mt-12">
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className='me-4 my-auto' />
-                    <input type="text" name="" id="" className='bg-transparent w-full py-2' placeholder='wpisz coś'/>
-                </div>
-                <MoviesBox/>
-                <div className="mt-16"></div>
-                <MoviesBox/>
-                <div className="mt-16"></div>
-                <MoviesBox/>
+                <Posts/>
             </DashboardLayout>
         </MainLayout>
     )

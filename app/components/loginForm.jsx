@@ -6,6 +6,7 @@ import ValidationAlert from './validationAlert'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { data } from 'autoprefixer'
+import SectionHeader from './sectionHeader'
 
 export default function LoginForm() {
     const [email, setEmail] = useState('')
@@ -32,23 +33,21 @@ export default function LoginForm() {
     }
 
     return (
-        <div className="flex flex-col p-8 border border-solid border-orange-600 bg-orange-600/30 rounded-lg mx-auto my-auto">
+        <div className="flex flex-col p-8 border bg-white rounded-md mx-auto my-auto min-w-80">
             {/* <ValidationAlert status={`Alert`} msg={`Failed :(`} color={`border-red-600`}/>
             <div className="mb-8"></div> */}
-            <h3 className="mb-12 text-4xl">
-                Witaj <br/>w świecie kina!
-            </h3>
+            <SectionHeader label={`Logowanie`}></SectionHeader>
             <div className="flex flex-col">
-                <small className='mb-2'>adres email</small>
+                <small className='mb-2 text-zinc-800'>adres email</small>
                 <input type={`email`} name={`email`} id="" placeholder={`wprowadź swój adres email`} 
-                    className='px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-lg text-md'
+                    className='px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-md text-md text-zinc-800 placeholder:text-zinc-800/60'
                     onChange={(e) => setEmail(e.target.value)}/>
             </div>
             <div className="my-3"></div>
             <div className="flex flex-col">
-                <small className='mb-2'>hasło</small>
+                <small className='mb-2 text-zinc-800'>hasło</small>
                 <input type={`password`} name={`password`} id="" placeholder={`podaj hasło`} 
-                    className='px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-lg text-md'
+                    className='px-4 py-2 border border-solid border-orange-600 bg-orange-600/30 rounded-md text-md text-zinc-800 placeholder:text-zinc-800/60'
                     onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <div className="my-4"></div>

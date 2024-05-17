@@ -3,6 +3,7 @@ import { useState } from "react";
 import GlobalButton from "./globalButton";
 import GlobalInput from "./globalInput";
 import ValidationAlert from "./validationAlert";
+import SectionHeader from "./sectionHeader";
 
 export default function RegisterForm() {
     const [firstName, setFirstName] = useState('')
@@ -36,10 +37,8 @@ export default function RegisterForm() {
     }
 
     return (
-        <div className="flex flex-col p-8 border border-solid border-orange-600 bg-orange-600/30 rounded-lg mx-auto my-auto">
-            <h3 className="mb-12 text-4xl">
-                Rejestracja
-            </h3>
+        <div className="flex flex-col p-8 border bg-white rounded-md mx-auto my-auto">
+            <SectionHeader label={`Rejestracja`}></SectionHeader>
             {status ? 
                 <>
                     <ValidationAlert status={`Success`} msg={status} color={`bg-green-600/30 border-green-600`}/> 
