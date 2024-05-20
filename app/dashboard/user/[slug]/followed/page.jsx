@@ -1,15 +1,13 @@
 "use client"
+import ButtonLay from "@/app/components/buttonLay";
 import DashboardLayout from "@/app/components/dashboardLayout";
 import FollowUserItem from "@/app/components/followUser";
 import MainLayout from "@/app/components/mainLayout";
 import PageHeader from "@/app/components/pageHeader";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-const userData = {
-    name: 'Dominik',
-    email: 'email@test.pl'
-}
+import user_icon from '@/app/assets/user.svg'
+import Link from "next/link";
 
 export default function Followed() {
     const [followed, setIsFollowed] = useState([])
@@ -37,25 +35,30 @@ export default function Followed() {
 
     if (isError) 
     return <MainLayout>
-                <DashboardLayout user={userData}>
+                <DashboardLayout>
                     <h2>Error</h2>
                 </DashboardLayout>
             </MainLayout>
 
     if (isLoading) 
     return <MainLayout>
-                <DashboardLayout user={userData}>
+                <DashboardLayout>
                     <h2>Loading</h2>
                 </DashboardLayout>
             </MainLayout>
 
     return (
         <MainLayout>
-            <DashboardLayout user={userData}>
+            <DashboardLayout>
                 <PageHeader parent={`Profil użytkownika`} child={`Obserwowani`}/>
+                <div className="mt-6"></div>
                 <div className="grid grid-cols-3 gap-8">
                     {followed.map((user) => (
-                        <FollowUserItem user={user.followed_belongs}/>
+                        <Link href={`/dashboard/user/${user.followed_belongs.nickname}`} className="my-auto" key={user.id}>
+                            <ButtonLay>
+                                <FollowUserItem user={user.followed_belongs}/>
+                            </ButtonLay>
+                        </Link>
                     ))}
                 </div>
             </DashboardLayout>
