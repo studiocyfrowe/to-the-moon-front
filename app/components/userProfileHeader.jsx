@@ -4,16 +4,20 @@ import dustin from '../assets/dustin-hofman.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import Link from 'next/link'
+import axios from 'axios'
 
 export default function UserProfileHeader({data, following, followers}) {
+    async function unFollowUser(userID) {
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/social/unfollow/${userID}`, {
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        }).then((res) => res.data)
+        .catch((e) => console.log(e))
+    }
+
     return (
         <div className="grid grid-cols-7 gap-8 border-b border-solid border-orange-600/30 py-8">
             <div className="col-span-3 flex">
                 <div className="flex flex-col w-full my-auto">
-                    {/* <div className="rounded-full border border-solid border-orange-600 bg-orange-600/30 p-3 flex me-auto mb-4">
-                        <FontAwesomeIcon icon={faUser} className='h-4 m-auto' />
-                    </div>
-                    <small className='mb-6'>Trochę o Tobie:</small> */}
                     <div className="flex flex-row">
                         {dustin ? <div className='w-24 h-24 border-2 border-solid border-orange-600 rounded-full me-6' style={{
                             backgroundImage: `url(${dustin.src})`,
@@ -34,6 +38,9 @@ export default function UserProfileHeader({data, following, followers}) {
                                         <FontAwesomeIcon icon={faUser} className='h-4 me-2' />{`Oberwowani`} <span>({followers})</span>
                                     </div>
                                 </Link>
+                            </div>
+                            <div className="mt-4 text-xs cursor-pointer" onClick={() => unFollowUser(data.id)}>
+                                <u>przestań obserwować</u>
                             </div>
                         </div>
                     </div>

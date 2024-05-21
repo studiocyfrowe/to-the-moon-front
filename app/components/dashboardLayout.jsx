@@ -16,7 +16,15 @@ export default function DashboardLayout({user, children}) {
             <div className="flex flex-col px-16 py-8">
                 <div className="flex flex-row mb-4">
                     <Image src={logoNEW} height={75} alt="Logo" className="me-auto"/>
-                    <div className="my-auto">
+                    <div className="my-auto flex flex-row ms-auto">
+                        <Breadcrumb
+                            homeElement={'Home'}
+                            separator={<span> \</span>}
+                            activeClasses='border-b border-solid border-white'
+                            containerClasses='flex text-xs my-auto me-4 mt-1'
+                            listClasses='hover:bg-orange-600/50 me-4 font-bold my-auto'
+                            capitalizeLinks
+                        />
                         <ButtonLay>
                             <Image src={logout} height={20} alt="Logout"/>
                         </ButtonLay>
@@ -61,14 +69,6 @@ export default function DashboardLayout({user, children}) {
                         <small>2024 | wielki format | by studio_cyfrowe</small>
                     </div>
                     <div className="col-span-10 border border-solid border-orange-600 bg-orange-600/30 rounded-lg p-6 overflow-y-scroll h-full">
-                        <Breadcrumb
-                            homeElement={'Home'}
-                            separator={<span> \</span>}
-                            activeClasses='border-b border-solid border-white'
-                            containerClasses='flex text-xs mb-4' 
-                            listClasses='hover:bg-orange-600/50 me-4 font-bold my-auto'
-                            capitalizeLinks
-                        />
                         {children}
                     </div>
                 </div>

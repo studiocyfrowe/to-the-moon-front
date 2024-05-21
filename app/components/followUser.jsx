@@ -4,13 +4,6 @@ import axios from "axios";
 import user_icon from '@/app/assets/user.svg'
 
 export default function FollowUserItem({user}) {
-    async function unFollowUser(userID) {
-        await axios.post(`http://127.0.0.1:8000/api/user/social/unfollow/${userID}`, {
-            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
-        }).then((res) => res.data)
-        .catch((e) => console.log(e))
-    }
-    
     return (
         <React.Fragment>
             <div className="flex flex-row m-3 text-white text-start" key={user.id}>
